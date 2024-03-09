@@ -1,0 +1,51 @@
+﻿@page
+@model Demo.Pages.User.EditModel
+@{
+}
+
+<h2>Add New User data</h2>
+
+@if (Model.errorMsg.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.errorMsg</strong>
+        <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+
+@if (Model.successMsg.Length > 0)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@Model.successMsg</strong>
+        <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+
+<form method="POST">
+    <input type="hidden" name="hiddenId" value="@Model.user.ID" />
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Student Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Student_name" value="@Model.user.Student_name" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">College Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Student_uni" value="@Model.user.Student_uni" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">College Id</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Uni_Id" value="@Model.user.Uni_Id" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="offset-sm-3  col-sm-3 g-grid">
+            <button type="submit" class="btn btn-primary">Submit</button> &nbsp;
+            <button type="submit" class="btn btn-danger">Cancel</button>
+        </div>
+    </div>
+</form>

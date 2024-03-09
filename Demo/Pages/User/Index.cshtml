@@ -1,0 +1,48 @@
+﻿@page
+@model Demo.Pages.User.IndexModel
+@{
+}
+
+
+<a href="/User/Create" class="btn btn-primary">Create</a>
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Student Name</td>
+            <td>College Name</td>
+            <td>College ID</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+             foreach(var item in Model.listUsers) 
+            {
+                <tr>
+                <td>@item.ID</td>
+                    <td>@item.Student_name</td>
+                    <td>@item.Student_uni</td>
+                    <td>@item.Uni_Id</td>
+                <td>
+                     <a href="/User/Edit?itemid=@item.ID" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                     <a onclick="return onDelete(@item.ID)" class="btn btn-danger">Delete</a>
+                </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<script>
+	function onDelete(id){
+		if (window.confirm("Are you sure you want to delete the record?")) 
+        {
+			window.location.href = "/User/Delete?id=" + id;
+		}
+	}
+</script>
